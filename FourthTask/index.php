@@ -50,11 +50,11 @@
     //Запрос на создание таблицы спортсменов.
     //К перечисленным в задании данным, я добавил id_sportsmen, чтобы его можно было использовать как primary key.
 
-    $createdb = "CREATE TABLE `sportsmenss` 
+    $createdb = "CREATE TABLE `sportsmens` 
     (`id_sportsmen` INT NOT NULL AUTO_INCREMENT ,
     `FCs` VARCHAR(45) NOT NULL ,
     `email` VARCHAR(30) NOT NULL ,
-    `phone_num` VARCHAR(12) NOT NULL CONSTRAINT phone_num_checks CHECK (`phone_num` REGEXP '[+7][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]') ,
+    `phone_num` VARCHAR(12) NOT NULL CONSTRAINT phone_num_check CHECK (`phone_num` REGEXP '[+7][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]') ,
     `datebirth` DATE NOT NULL ,
     `age` TINYINT(50) NOT NULL ,
     `create_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -69,5 +69,4 @@
     //Так как в любом соревновании у спортсмена есть хоть какой-то результат, то и выборка будет по частоте этого спортсмена в таблице результатов.
 
     $oftenSportsmens = "SELECT `FCs` FROM `results`, `sportsmens` WHERE `results`.`res_id_sportsmen` = `sportsmens`.`id_sportsmen` GROUP BY `ref_id_sportsmen` ORDER BY count(*) DESC LIMIT 5;";
-
 ?>
