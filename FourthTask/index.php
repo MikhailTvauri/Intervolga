@@ -68,5 +68,5 @@
     //Запрос на выборку спортсменов, которые чаще всего встречаются на соревнованиях.
     //Так как в любом соревновании у спортсмена есть хоть какой-то результат, то и выборка будет по частоте этого спортсмена в таблице результатов.
 
-    $oftenSportsmens = "SELECT `FCs` FROM `results`, `sportsmens` WHERE `results`.`res_id_sportsmen` = `sportsmens`.`id_sportsmen` GROUP BY `ref_id_sportsmen` ORDER BY count(*) DESC LIMIT 5;";
+    $oftenSportsmens = "SELECT `FCs` FROM `results`, `sportsmens` WHERE `results`.`res_id_sportsmen` = `sportsmens`.`id_sportsmen` GROUP BY `res_id_sportsmen` ORDER BY count(*) DESC LIMIT 5;";
 ?>
